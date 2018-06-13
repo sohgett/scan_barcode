@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Video</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+  <link rel="stylesheet" href="css/index.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body>
+  <button id="start1">Start user</button>
+  <button id="start2">Start env</button>
+  <button id="stop">Stop</button>
+  <video id="video" autoplay playsinline></video>
+  <div>result = <span id="result"></span></div>
+  <button id="capture">Capture</button>
+  <br>
+  <button id="decode1">Decode barcode</button>
+  <button id="decode2">Decode jsqrcode</button>
+  <br>
+  <button id="loop1">Loop Decode barcode</button>
+  <button id="loop2">Loop Decode jsqrcode</button>
+  <br>
+  <canvas id="canvas"></canvas>
+  <img id="image1" src="img/barcode.jpg" />
+  <img id="image2" src="img/qrcode.png" />
+  <script src="js/JOB.js"></script>
+  <script src="js/qr_packed.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
