@@ -11,13 +11,12 @@ body {
 
 #video {
     display: block;
-    width: 320px;
-    height: 240px;
+    width: 100%;
 }
 
 #layer1 {
-    width: 320px;
-    height: 80px;
+    width: 100%;
+    height: calc(100% / 3);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -26,10 +25,10 @@ body {
 }
 
 #layer2 {
-    width: 320px;
-    height: 80px;
+    width: 100%;
+    height: calc(100% / 3);
     position: absolute;
-    top: 160px;
+    top: calc(100% * 2 / 3);
     left: 0px;
     background-color: grey;
     opacity: 0.8;
