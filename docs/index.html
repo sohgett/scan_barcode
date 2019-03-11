@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8" />
   <title>Video</title>
@@ -7,11 +8,16 @@
   <link rel="stylesheet" href="css/index.css" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
+
 <body>
   <button id="start1">Start user</button>
   <button id="start2">Start env</button>
   <button id="stop">Stop</button>
-  <video id="video" autoplay playsinline></video>
+  <div id="video_wrap">
+    <video id="video" autoplay playsinline></video>
+    <div id="layer1"></div>
+    <div id="layer2"></div>
+  </div>
   <div>result = <span id="result"></span></div>
   <button id="capture">Capture</button>
   <br>
@@ -28,4 +34,5 @@
   <script src="js/qr_packed.js"></script>
   <script src="js/index.js"></script>
 </body>
+
 </html>

@@ -3,10 +3,34 @@ body {
     background: #fff;
 }
 
+#video_wrap {
+    position: relative;
+    width: 320px;
+    height: 240px;
+}
+
 #video {
     display: block;
     width: 320px;
     height: 240px;
+}
+
+#layer1 {
+    width: 320px;
+    height: 80px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: grey;
+}
+
+#layer2 {
+    width: 320px;
+    height: 80px;
+    position: absolute;
+    top: 160px;
+    left: 0px;
+    background-color: grey;
 }
 
 #canvas {
