@@ -42,9 +42,9 @@ const captureVideo = function () {
   canvas.height = h;
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
   // 他のバーコードを読まなくするために、上下 1/3 を黒く塗りつぶす
-  // context.fillStyle = 'rgb(0, 0, 0)';
-  // context.fillRect(0, 0, canvas.width, canvas.height / 3);
-  // context.fillRect(0, canvas.height * 2 / 3, canvas.width, canvas.height);
+  context.fillStyle = 'rgb(0, 0, 0)';
+  context.fillRect(0, 0, canvas.width, canvas.height / 3);
+  context.fillRect(0, canvas.height * 2 / 3, canvas.width, canvas.height);
 };
 
 const successCallback = function (stream) {
