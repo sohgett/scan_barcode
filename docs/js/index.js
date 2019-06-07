@@ -129,11 +129,23 @@ const decode_jsqrcode = function () {
 
 // bind event
 start1.addEventListener("click", function () {
-  navigator.getUserMedia(medias1, successCallback, errorCallback);
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia(medias1)
+      .then(successCallback)
+      .catch(errorCallback);
+  } else {
+    navigator.getUserMedia(medias1, successCallback, errorCallback);
+  }
 });
 
 start2.addEventListener("click", function () {
-  navigator.getUserMedia(medias2, successCallback, errorCallback);
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia(medias2)
+      .then(successCallback)
+      .catch(errorCallback);
+  } else {
+    navigator.getUserMedia(medias2, successCallback, errorCallback);
+  }
 });
 
 stop.addEventListener("click", function () {
