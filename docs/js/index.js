@@ -27,7 +27,7 @@ const image2 = document.getElementById("image2");
 const result = document.getElementById("result");
 
 // logic
-const captureVideo = function () {
+const captureVideo = function() {
   if (!video.srcObject) {
     return;
   }
@@ -42,20 +42,20 @@ const captureVideo = function () {
   canvas.height = h;
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
   // 他のバーコードを読まなくするために、上下 1/3 を黒く塗りつぶす
-  context.fillStyle = 'rgb(0, 0, 0)';
+  context.fillStyle = "rgb(0, 0, 0)";
   context.fillRect(0, 0, canvas.width, canvas.height / 3);
-  context.fillRect(0, canvas.height * 2 / 3, canvas.width, canvas.height);
+  context.fillRect(0, (canvas.height * 2) / 3, canvas.width, canvas.height);
 };
 
-const successCallback = function (stream) {
+const successCallback = function(stream) {
   video.srcObject = stream;
 };
 
-const errorCallback = function (err) {
+const errorCallback = function(err) {
   alert(err);
 };
 
-const imageToCanvas = function (image) {
+const imageToCanvas = function(image) {
   const context = canvas.getContext("2d");
   const w = image.width;
   const h = image.height;
@@ -67,16 +67,14 @@ const imageToCanvas = function (image) {
 };
 
 const showPicture = document.createElement("img");
-showPicture.onload = function (event) {
+showPicture.onload = function(event) {
   JOB.DecodeImage(showPicture);
-}
+};
 
 let job_decode_result = null;
 JOB.Init();
-JOB.SetDecodeFormats([
-  'EAN-13'
-]);
-JOB.SetImageCallback(function (ret) {
+JOB.SetDecodeFormats(["EAN-13"]);
+JOB.SetImageCallback(function(ret) {
   if (job_decode_result) {
     return true;
   }
@@ -95,7 +93,7 @@ JOB.SetImageCallback(function (ret) {
   }
 });
 
-const decode_JOB = function () {
+const decode_JOB = function() {
   if (job_decode_result) {
     return true;
   }
@@ -105,13 +103,13 @@ const decode_JOB = function () {
 };
 
 let jsq_decode_result = null;
-const decode_jsqrcode = function () {
+const decode_jsqrcode = function() {
   if (jsq_decode_result) {
     return true;
   }
   result.innerHTML = "";
   const base64 = canvas.toDataURL();
-  qrcode.callback = function (res) {
+  qrcode.callback = function(res) {
     if (jsq_decode_result) {
       return true;
     }
@@ -128,9 +126,10 @@ const decode_jsqrcode = function () {
 };
 
 // bind event
-start1.addEventListener("click", function () {
+start1.addEventListener("click", function() {
   if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia(medias1)
+    navigator.mediaDevices
+      .getUserMedia(medias1)
       .then(successCallback)
       .catch(errorCallback);
   } else {
@@ -138,9 +137,10 @@ start1.addEventListener("click", function () {
   }
 });
 
-start2.addEventListener("click", function () {
+start2.addEventListener("click", function() {
   if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia(medias2)
+    navigator.mediaDevices
+      .getUserMedia(medias2)
       .then(successCallback)
       .catch(errorCallback);
   } else {
@@ -148,44 +148,44 @@ start2.addEventListener("click", function () {
   }
 });
 
-stop.addEventListener("click", function () {
+stop.addEventListener("click", function() {
   const stream = video.srcObject;
   if (!stream) {
     return;
   }
   const tracks = stream.getTracks();
-  tracks.forEach(function (track) {
+  tracks.forEach(function(track) {
     track.stop();
   });
   video.srcObject = null;
 });
 
-capture.addEventListener("click", function () {
+capture.addEventListener("click", function() {
   captureVideo();
 });
 
-image1.addEventListener("click", function () {
+image1.addEventListener("click", function() {
   imageToCanvas(image1);
 });
 
-image2.addEventListener("click", function () {
+image2.addEventListener("click", function() {
   imageToCanvas(image2);
 });
 
-decode1.addEventListener("click", function () {
+decode1.addEventListener("click", function() {
   job_decode_result = null;
   decode_JOB();
 });
 
-decode2.addEventListener("click", function () {
+decode2.addEventListener("click", function() {
   jsq_decode_result = null;
   decode_jsqrcode();
 });
 
-loop1.addEventListener("click", function () {
+loop1.addEventListener("click", function() {
   job_decode_result = null;
   let n = 0;
-  const f = function () {
+  const f = function() {
     if (!video.srcObject) {
       return;
     }
@@ -205,10 +205,10 @@ loop1.addEventListener("click", function () {
   f();
 });
 
-loop2.addEventListener("click", function () {
+loop2.addEventListener("click", function() {
   jsq_decode_result = null;
   let n = 0;
-  const f = function () {
+  const f = function() {
     if (!video.srcObject) {
       return;
     }
